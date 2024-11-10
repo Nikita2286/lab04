@@ -1,0 +1,19 @@
+
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++17
+
+EXEC = game
+
+SRC = point.cpp board.cpp painter.cpp snake.cpp
+OBJ = $(SRC:.cpp=.o)
+
+all: $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(CXX) $(OBJ) -o $(EXEC)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(EXEC)
